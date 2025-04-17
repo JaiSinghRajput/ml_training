@@ -1,0 +1,42 @@
+[
+    {
+        "name": "John Doe",
+        "age": 30,
+        "city": "New York"
+    },
+    {
+        "name": "Jane Smith",
+        "age": 25,
+        "city": "Los Angeles"
+    },
+    {
+        "name": "Sam Brown",
+        "age": 22,
+        "city": "Chicago"
+    },
+    {
+        "name": "Emily Davis",
+        "age": 28,
+        "city": "Houston"
+    },
+    {
+        "name": "Michael Johnson",
+        "age": 35,
+        "city": "Phoenix"
+    },
+    {
+        "name": "Sarah Wilson",
+        "age": 27,
+        "city": "Philadelphia"
+    },
+    {
+        "name": "David Lee",
+        "age": 32,
+        "city": "San Antonio"
+    },
+    {
+        "name": "Laura Martinez",
+        "age": 29,
+        "city": "San Diego"
+    }
+]
