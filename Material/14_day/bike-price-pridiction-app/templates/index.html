@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Old Bike Price Predictor</title>
+    <link rel="stylesheet" href="../static/css/main.css">
+    <style>
+        body {
+            background: linear-gradient(145deg, #1a002b, #0e001a);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="text-white font-sans">
+    <!-- Navbar -->
+    <header
+        class="px-6 py-4 flex justify-between items-center backdrop-blur-lg bg-white/10 border-b border-pink-500/20 shadow-lg">
+        <h1 class="text-3xl font-extrabold text-pink-400 tracking-wide">BikePredictor</h1>
+        <nav class="space-x-6 text-pink-200 text-sm font-medium">
+
+            <a href="#features" class="hover:text-pink-400 transition">Features</a>
+            <a href="/about" class="hover:text-pink-400 transition">About</a>
+            <a href="#predict" class="hover:text-pink-400 transition">Predict</a>
+            <a href="#contact" class="hover:text-pink-400 transition">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="px-6 py-24 text-center">
+        <div
+            class="max-w-3xl mx-auto bg-white/10 backdrop-blur-2xl p-10 rounded-3xl border border-pink-500/20 shadow-2xl transition duration-500 hover:scale-[1.01]">
+            <h2 class="text-5xl font-extrabold text-pink-300 mb-4">What’s Your Bike Worth?</h2>
+            <p class="text-lg text-pink-100 mb-8">
+                Predict the price of your old bike with AI accuracy and beautiful simplicity.
+            </p>
+            <a href="#predict"
+                class="inline-block px-8 py-3 bg-gradient-to-tr from-pink-500 to-purple-700 rounded-full text-white font-semibold shadow-lg hover:shadow-pink-500/40 hover:scale-105 transition">
+                Predict Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="px-6 py-20">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+            <div
+                class="bg-white/10 backdrop-blur-xl border border-pink-400/20 rounded-2xl p-6 shadow-lg hover:scale-[1.02] transition text-center">
+                <div class="text-4xl mb-4 text-pink-300">💡</div>
+                <h3 class="text-xl font-semibold text-pink-100 mb-2">AI Predictions</h3>
+                <p class="text-pink-200">Trained on thousands of real listings for unmatched accuracy.</p>
+            </div>
+            <div
+                class="bg-white/10 backdrop-blur-xl border border-pink-400/20 rounded-2xl p-6 shadow-lg hover:scale-[1.02] transition text-center">
+                <div class="text-4xl mb-4 text-pink-300">⚡</div>
+                <h3 class="text-xl font-semibold text-pink-100 mb-2">Instant & Easy</h3>
+                <p class="text-pink-200">Enter basic details and get results instantly with a click.</p>
+            </div>
+            <div
+                class="bg-white/10 backdrop-blur-xl border border-pink-400/20 rounded-2xl p-6 shadow-lg hover:scale-[1.02] transition text-center">
+                <div class="text-4xl mb-4 text-pink-300">📊</div>
+                <h3 class="text-xl font-semibold text-pink-100 mb-2">Market Insight</h3>
+                <p class="text-pink-200">Make smart decisions with real-time price trend insights.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prediction Form -->
+    <section id="predict" class="px-6 py-24">
+        <div
+            class="max-w-2xl mx-auto bg-white/10 backdrop-blur-2xl border border-pink-500/20 rounded-3xl p-10 shadow-2xl">
+            <h2 class="text-3xl font-bold text-center text-pink-200 mb-6">Check Your Bike’s Value</h2>
+            <form class="space-y-5" action="/api/getPrediction" method="POST">
+                <!-- kms_driven	owner	age	power	brand  -->
+                <!-- owner = First Owner , Secound Owner , Third Owner , Fourth Owner or More -->
+                <div class="flex flex-col space-y-4">
+                    <input type="number" name="kms_driven" placeholder="Kms Driven" required
+                        class="p-4 bg-white/10 border border-pink-500/20 rounded-lg text-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500 transition" />
+                    <select name="owner" required class="p-4 bg-white/10 border border-pink-500/30 rounded-xl text-pink-200 
+                               focus:outline-none focus:ring-2 focus:ring-pink-500/60 
+                               backdrop-blur-md transition duration-300 shadow-md hover:shadow-pink-500/20">
+                        <option value="" disabled selected class="bg-[#1a002b] text-pink-300">Select Owner Type</option>
+                        {% for owner in owners %}
+                        <option value="{{ owner }}" class="bg-[#1a002b] text-pink-300">{{ owner }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="number" name="age" placeholder="Age (in years)" required
+                        class="p-4 bg-white/10 border border-pink-500/20 rounded-lg text-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500 transition" />
+                    <input type="number" name="power" placeholder="Power (in CC)" required
+                        class="p-4 bg-white/10 border border-pink-500/20 rounded-lg text-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500 transition" />
+                    <select name="brand" required class="p-4 bg-white/10 border border-pink-500/30 rounded-xl text-pink-200 
+                        focus:outline-none focus:ring-2 focus:ring-pink-500/60 
+                        backdrop-blur-md transition duration-300 shadow-md hover:shadow-pink-500/20">
+                        <option value="" disabled selected class="bg-[#1a002b] text-pink-300">Select Brand</option>
+                        {% for brand in brands %}
+                        <option value="{{ brand }}" class="bg-[#1a002b] text-pink-300">{{ brand }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div id="predictionResult"
+                    class="mt-8 hidden bg-white/10 backdrop-blur-xl border border-pink-500/20 text-pink-100 p-6 rounded-2xl shadow-lg transition duration-300">
+                    <p class="text-lg font-semibold">Predicted Price: <span id="priceValue"
+                            class="text-pink-400">₹0</span></p>
+                </div>
+                <button id="predict-button" type="button"
+                    class="w-full py-3 bg-gradient-to-tr from-pink-500 to-purple-700 text-white font-bold rounded-full hover:shadow-pink-500/30 hover:scale-[1.02] transition">
+                    Get Prediction
+                </button>
+            </form>
+        </div>
+        <div id="predictionResult"
+            class="mt-8 hidden bg-white/10 backdrop-blur-xl border border-pink-500/20 text-pink-100 p-6 rounded-2xl shadow-lg transition duration-300">
+            <p class="text-lg font-semibold">Predicted Price: <span id="priceValue" class="text-pink-400">₹0</span></p>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="text-center py-10 text-sm text-pink-300">
+        <p>&copy; 2025 BikePredictor. All rights reserved.</p>
+        <p>Contact us: <a href="mailto:support@bikepredictor.com"
+                class="text-pink-400 hover:underline">support@bikepredictor.com</a></p>
+    </footer>
+    <script>
+        result = document.getElementById("predictionResult")
+        priceValue = document.getElementById("priceValue")
+        predictButton = document.getElementById("predict-button")
+        predictButton.addEventListener("click", function () { 
+            const kms_driven = document.querySelector('input[name="kms_driven"]').value;
+            const owner = document.querySelector('select[name="owner"]').value;
+            const age = document.querySelector('input[name="age"]').value;
+            const power = document.querySelector('input[name="power"]').value;
+            const brand = document.querySelector('select[name="brand"]').value;
+            if(kms_driven === "" || owner === "" || age === "" || power === "" || brand === "") {
+                alert("Please fill all the fields.");
+                return;
+            }
+            if (isNaN(kms_driven) || isNaN(age) || isNaN(power)) {
+                alert("Please enter valid numbers for Kms Driven, Age, and Power.");
+                return;
+            }
+            const data = {
+                kms_driven: kms_driven,
+                owner: owner,
+                age: age,
+                power: power,
+                brand: brand
+            };
+            console.log(data)
+            fetch('/api/getPrediction', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    priceValue.innerText = `₹${data.price}`;
+                    result.classList.remove("hidden");
+                } else {
+                    alert("Error: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("An error occurred while fetching the prediction.");
+            });
+        })
+    </script>
+</body>
+
+</html>
