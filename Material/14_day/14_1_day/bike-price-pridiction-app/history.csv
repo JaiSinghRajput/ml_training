@@ -1,0 +1,8 @@
+kms_driven,owner,age,power,brand,date,predicted_price
+1000,First Owner,0,110.0,TVS,2025-04-21,41498.93
+99999,First Owner,0,110.0,Royal Enfield,2025-04-21,-80832.87
+99999,First Owner,0,350.0,Royal Enfield,2025-04-21,94916.09
+41001,First Owner,0,350.0,Royal Enfield,2025-04-21,101584.59
+41001,First Owner,0,350.0,BMW,2025-04-21,214863.08
+41001,First Owner,2,350.0,BMW,2025-04-21,208783.18
+1000,First Owner,0,110.0,Yamaha,2025-04-21,55791.96

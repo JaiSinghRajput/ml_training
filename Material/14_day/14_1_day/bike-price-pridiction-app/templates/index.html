@@ -152,6 +152,8 @@
                 brand: brand
             };
             console.log(data)
+            result.classList.remove("hidden");
+            priceValue.innerText = `Loading...`;
             fetch('/api/getPrediction', {
                 method: 'POST',
                 headers: {
@@ -163,7 +165,6 @@
             .then(data => {
                 if (data.success) {
                     priceValue.innerText = `₹${data.price}`;
-                    result.classList.remove("hidden");
                 } else {
                     alert("Error: " + data.message);
                 }

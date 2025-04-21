@@ -10,7 +10,6 @@ model = pickle.load(open(r"D:\CLG TRAINING\Material\14_day\bike-price-pridiction
 brand = data["brand"].unique()
 brand = np.sort(brand)
 brand = brand.tolist()
-
 owner = data["owner"].unique()
 owner = np.sort(owner)
 owner = owner.tolist()
