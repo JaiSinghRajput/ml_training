@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crop Recommendation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+  <div class="max-w-xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+    <h2 class="text-2xl font-bold mb-6 text-center">🌿 Crop Recommendation Form</h2>
+    <form method="POST" class="space-y-4" action="/predict">
+      <div>
+        <label class="block font-medium">Nitrogen (N)</label>
+        <input type="number" name="N" class="w-full border p-2 rounded" required>
+      </div>
+      <div>
+        <label class="block font-medium">Phosphorus (P)</label>
+        <input type="number" name="P" class="w-full border p-2 rounded" required>
+      </div>
+      <div>
+        <label class="block font-medium">Potassium (K)</label>
+        <input type="number" name="K" class="w-full border p-2 rounded" required>
+      </div>
+      <div>
+        <label class="block font-medium">Temperature (°C)</label>
+        <input type="number" step="0.1" name="temperature" class="w-full border p-2 rounded" required>
+      </div>
+      <div>
+        <label class="block font-medium">Humidity (%)</label>
+        <input type="number" step="0.1" name="humidity" class="w-full border p-2 rounded" required>
+      </div>
+      <div>
+        <label class="block font-medium">pH</label>
+        <input type="number" step="0.1" name="ph" class="w-full border p-2 rounded" required>
+      </div>
+      <div>
+        <label class="block font-medium">Rainfall (mm)</label>
+        <input type="number" step="0.1" name="rainfall" class="w-full border p-2 rounded" required>
+      </div>
+      <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
+        Predict Crop
+      </button>
+    </form>
+  </div>
+
+</body>
+</html>

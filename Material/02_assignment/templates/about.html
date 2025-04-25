@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}About - SmartCrop{% endblock %}
+{% block content %}
+<div class="bg-white p-6 rounded-lg shadow max-w-3xl mx-auto mt-8">
+  <h2 class="text-2xl font-bold text-green-700 mb-4">About SmartCrop</h2>
+  <p>This project uses machine learning to recommend the best crops for a farmer based on soil nutrients, temperature, humidity, pH, and rainfall.</p>
+  <ul class="list-disc ml-6 mt-4 text-gray-700">
+    <li>Trained model: Random Forest with 99.56% accuracy</li>
+    <li>Framework: Flask with server-side rendering</li>
+    <li>Frontend: Tailwind CSS</li>
+    <li>Language: Python</li>
+  </ul>
+  <p>For more information, visit our <a href="/contact">Contact</a> page.</p>
+</div>
+{% endblock %}

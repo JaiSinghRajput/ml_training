@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Crop Recommendation{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-3hKjSSQ0QImzXLX3tCvN8n8MIuU1WcKwUvEEXZqF5lg3md5ksS+Xov0kCrCMNQj5A0Rik0S2skCwGbQnDaU7Eg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2909/2909830.png" />
+</head>
+
+<body class="bg-green-50 text-gray-800">
+
+    <nav class="bg-green-700 text-white p-4 shadow">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="/" class="text-xl font-bold">🌿 SmartCrop</a>
+            <ul class="flex space-x-4">
+                <li><a href="/" class="hover:underline">Home</a></li>
+                <li><a href="/recommend" class="hover:underline">Predict</a></li>
+                <li><a href="/about" class="hover:underline">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto p-6">
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+
+</html>
